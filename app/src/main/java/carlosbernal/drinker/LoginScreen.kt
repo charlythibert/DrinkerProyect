@@ -1,6 +1,7 @@
 package carlosbernal.drinker
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,14 +31,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import carlosbernal.drinker.utils.CustomOutlinedTextField
 
 @Composable
 
-fun LoginScreen() {
+fun LoginScreen(navigateToRegister: () -> Unit, navigateToHome: () -> Unit) {
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -125,13 +125,10 @@ fun LoginScreen() {
                     textDecoration = TextDecoration.Underline
                 ),
                 modifier = Modifier.padding(start = 10.dp)
+                    .clickable {
+                        navigateToRegister()
+                    }
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen()
 }
